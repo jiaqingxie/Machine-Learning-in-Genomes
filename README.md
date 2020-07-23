@@ -2,8 +2,11 @@
 Supervised by Manolis Kellis. Team member: Dexin, Yuan, Jing and Steven
 ## Contents
 * [Models](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Models)
-* [Papers]()
-* [Simulations]()
-* [Results]()
+* [Papers](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Papers)
+* [Simulations](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Simulations)
+* [Results](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Results)
 
 ### Models
+### Papers
+### Simulations
+### Results
