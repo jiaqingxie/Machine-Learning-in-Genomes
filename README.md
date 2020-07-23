@@ -1,5 +1,5 @@
 # Machine Learning in Genomes Summer Research
-Supervised by Manolis Kellis. Team member: Dexin, Yuan, Jing and Steven
+Supervised by Manolis Kellis. Team member: Dexin, Yuan, Varus and Steven
 ## Contents
 * [Models](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Models)
 * [Papers](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Papers)
