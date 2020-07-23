@@ -7,7 +7,9 @@ Supervised by Manolis Kellis. Team member: Dexin, Yuan, Jing and Steven
 * [Results](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Results)
 
 ### Models
-1. Variational Autoencoder
+1. Variational Autoencoder(VAE)
+2. Generative Adversial Network(GAN)
+3. Multilayer Perceptron(MLP)
 ### Papers
 ### Simulations
 ### Results
