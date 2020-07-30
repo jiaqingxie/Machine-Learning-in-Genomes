@@ -8,8 +8,8 @@ Supervised by Manolis Kellis. Team member: Dexin, Yuan, Varus and Steven
 * [Results](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Results)
 
 ### Datasets
-1.  [CCLE_gene_expression_tpm](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/tree/master/Dataset)
-1.  [TCGA_gene_expression_tpm](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/tree/master/Dataset)
+1.  [CCLE_gene_expression_tpm](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/tree/master/Dataset/CCLE)
+1.  [TCGA_gene_expression_tpm](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/tree/master/Dataset/TCGA)
 2.  [Drug expression data SMILES](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/tree/master/Dataset)
 ### Models
 1. Variational Autoencoder(VAE)
