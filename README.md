@@ -18,6 +18,7 @@ Specifically, in this research, we select breast cancer, which is the main cance
 * [Papers](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Papers)
 * [Simulations](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Simulations)
 * [Results](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Results)
+https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/results/figures/TSNE_before_vae(cgc_genes).png
 
 ### Datasets
 1.  [CCLE_gene_expression_tpm](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/tree/master/Dataset/CCLE)
