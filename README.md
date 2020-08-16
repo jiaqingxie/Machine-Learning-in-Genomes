@@ -31,4 +31,4 @@ Specifically, in this research, we select breast cancer, which is the main cance
 ### Papers
 ### Simulations
 ### Results
- 1.  [t-SNE](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/results/figures/TSNE_before_vae(cgc_genes).png)
+  ![t-SNE](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/results/figures/TSNE_before_vae(cgc_genes).png)
