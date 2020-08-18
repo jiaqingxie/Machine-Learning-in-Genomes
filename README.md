@@ -1,5 +1,5 @@
 # Machine Learning in Genomes Summer Research
-Supervised by Manolis Kellis. Team member: Dexin, Yuan, Varus and Steven
+Welcome to my first cancer machine learning project. Here's my teammates: Dexin, Yuan and Varus 
 ## Introductions
 With the development of molecular biology, the study of cancer genomics has enabled scientists to develop anti-cancer drugs according to cancers’ genomics features. These drugs are used widely and have great significance in the therapy of cancer treatment nowadays. However,the efficacy of anti-cancer drugs vary greatly from one kind of tumor to another,making it considerably difficult to customize therapy strategy for patients. Moreover, the efficacy of anti-cancer drugs is closely related with their molecular structure, which is also hard to predict even for sophisticated pharmacists. To provide more precise treatment strategy, a sufficient analysis and understanding of cancers’ genomic data and drugs molecular structure is essential.
 
