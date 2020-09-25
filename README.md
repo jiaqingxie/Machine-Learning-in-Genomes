@@ -6,9 +6,9 @@
 Welcome to my first cancer machine learning project. Here's my teammates: Yuan and Varus and Dexion. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB.
 
 ## Check you environment
-'''Bash
+```Bash
 pip install torch
-'''
+```
 
 
 
