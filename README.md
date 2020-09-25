@@ -7,7 +7,7 @@ Welcome to my first cancer machine learning project. Here's my teammates: Yuan a
 
 ## Check you environment
 ```Bash
-pip install torch
+conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 ```
 
 
