@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/language-python-orange.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)
 ![](https://img.shields.io/badge/github-v1.0.0-519dd9.svg)
-# Machine Learning in Genomes Summer Research
+# Variational Autoencoders in Anti-cancer drug response prediction
 Welcome to my first cancer machine learning project. Here's my teammates: Yuan and Varus and Dexion. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB.
 
 ## Check you environment
