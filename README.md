@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/language-python-orange.svg)
 ![](https://img.shields.io/badge/license-MIT-000000.svg)
 ![](https://img.shields.io/badge/github-v1.0.0-519dd9.svg)
-# Variational Autoencoders in Anti-cancer drug response prediction
+# Variational Autoencoders for Anti-cancer Drug Response Prediction
 Welcome to my first cancer machine learning project. Here's my teammates: Yuan and Varus and Dexion. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB.
 
 ## Check you environment
