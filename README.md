@@ -41,8 +41,7 @@ Specifically, in this research, we select breast cancer, which is the main cance
 2.  [Drug expression data SMILES](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/tree/master/Dataset)
 ### Models
 1. Variational Autoencoder(VAE)
-2. Generative Adversial Network(GAN)
-3. Multilayer Perceptron(MLP)
+2. Multilayer Perceptron(MLP)
 ### Papers
 ### Simulations
 ### Results
