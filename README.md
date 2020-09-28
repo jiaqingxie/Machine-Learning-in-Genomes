@@ -5,7 +5,10 @@
 # Variational Autoencoders for Anti-cancer Drug Response Prediction
 Welcome to my first cancer machine learning project. Here's my teammates: Yuan and Varus and Dexion. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB.
 
-## Check you environment
+## Check your environment
+You should have a pytorch version of 1.5.0 or above. Also you should have a cuda version of 9 or above.
+
+The following order in the command line can download the newest version of pytorch and torchvision with cuda version of 10.2. 
 ```Bash
 conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 ```
