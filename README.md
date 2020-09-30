@@ -25,6 +25,11 @@ Specifically, in this research, we select breast cancer, which is the main cance
 * [Auto-Encoding Variational Bayes](https://arxiv.org/pdf/1312.6114.pdf)
 
 
+## Pipeline 
+
+### Gene Variational Autoencoder (GeneVAE)
+
+### Molecular Variational Autoencoder(JTVAE)
 
 
 ## Contents
