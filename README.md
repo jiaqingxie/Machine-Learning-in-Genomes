@@ -28,10 +28,10 @@ Specifically, in this research, we select breast cancer, which is the main cance
 ## Pipeline 
 
 ### Gene Variational Autoencoder (GeneVAE)
-1. ![GeneVAE](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/GeneVAE.png)
+ ![GeneVAE](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/GeneVAE.png)
 
 ### Molecular Variational Autoencoder(JTVAE)
-
+![JTVAE](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/JTVAE.png)
 
 ## Contents
 * [Datasets](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-#Datasets)
