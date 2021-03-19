@@ -1,122 +1,17 @@
+"""
+This file preprocesses the CCLE gene expression dataset to match the cancer cell lines
+in GDSC dataset, and combine the encoded vectors of drug molecular data,cancer cell line
+gene expression data and the corresponding lnIC50 value in a single file to train the MLP model.
+"""
+
 import pandas as pd
 import numpy as np
 
 
-'''
-chunks = pd.read_csv(path+'TCGA_breast_gene_expression.txt',sep='\t',iterator = True)
-chunk = chunks.get_chunk(100000)
-
-chunk = chunk[["Sample name"]]
-chunk = chunk.drop_duplicates(keep='first')
-
-print(chunk)
-'''
-
-# Find corresponding cancer cell lines in GDSC
-'''
-def CCLE2GDSC(str):
-    index = str.find('_')
-    res = str[0: index]
-    iter = 0
-    while iter<len(res) and (res[iter]<'0' or res[iter]>'9'):
-        iter += 1
-    strList = list(res)
-    strList.insert(iter, '-')
-
-    return ''.join(strList), str[0: index]
-
-
-path = "D:\Study\CIS\数据集\CCLE\\"
-df = pd.read_table(open(path + 'CCLE_gene_expression_train(breast).txt'), sep='\t')
-df = df.drop('gene_id', axis=1)
-df = df.drop('transcript_ids', axis=1)
-CCLE_CellLines = list(df.columns.values)  # all cancer line information
-Revised_CellLines = CCLE_CellLines[:]
-iter = 0
-for iter in range(0, len(CCLE_CellLines)):
-    temp = CCLE_CellLines[iter]
-    Revised_CellLines[iter], CCLE_CellLines[iter] = CCLE2GDSC(temp)
-
-path = "D:\Study\CIS\数据集\GDSC\\"
-df = pd.read_table(open(path + 'GDSC1_fitted_dose_response_25Feb20.txt'), sep='\t')
-df = df[['CELL_LINE_NAME', 'DRUG_ID', 'DRUG_NAME', 'LN_IC50']]
-
-CCLE_CellLines = set(CCLE_CellLines)
-Revised_CellLines = set(Revised_CellLines)
-combine = list(CCLE_CellLines | Revised_CellLines)
-
-df = df.loc[df['CELL_LINE_NAME'].isin(combine)]
-
-df.to_csv(path + 'GDSC1_(breast).txt', sep='\t', index=False)
-'''
-
-#
-'''
-path = "D:\Study\CIS\数据集\GDSC\\"
-df = pd.read_table(open(path + 'PUBCHEM_id_GDSC1.txt'), sep='\t')
-df2 = pd.read_table(open(path + 'SMILES_GDSC1.txt'), sep='\t')
-
-df = pd.merge(df, df2)
-df.to_csv(path + 'GDSC1_DRUG_SMILES.txt', sep='\t', index=False)
-'''
-
-# breast data in GDSC incoporated with SMILES representation of drugs
-'''
-path = "D:\Study\CIS\数据集\GDSC\\"
-df = pd.read_table(open(path + 'DRUG_SMILES.txt'), sep='\t')
-df2 = pd.read_table(open(path + 'GDSC1_(breast).txt'), sep='\t')
-df = pd.merge(df, df2)
-
-df = df[['CELL_LINE_NAME', 'DRUG_ID', 'SMILES_expression', 'LN_IC50']]
-df.to_csv(path + 'CellLine_Smiles_IC50.txt', sep='\t', index=False)
-'''
-
-# CSI --> latent vectors of drugs
-'''
-path = "D:\Study\CIS\数据集\GDSC\\"
-df = pd.read_table(open(path + 'CellLine_Smiles_IC50.txt'), sep='\t')
-df2 = pd.read_table(open(path + 'JTVAE_latent_size_60.txt'), sep='\t')
-df = pd.merge(df, df2)
-
-df = df.drop('CELL_LINE_NAME', axis=1)
-df = df.drop('DRUG_ID', axis=1)
-df = df.drop('SMILES_expression', axis=1)
-df = df.drop('LN_IC50', axis=1)
-df.to_csv(path + 'LatentVec_Drug_CSI.txt', sep='\t', index=False)
-'''
-
-
-# CSI --> latent vectors of drugs + latent vectors of gene expression
-
-path = "D:\Study\CIS\数据集\GDSC\\"
-df = pd.read_table(open(path + 'CellLine_Smiles_IC50.txt'), sep='\t')
-df2 = pd.read_table(open(path + 'JTVAE_latent_size_60.txt'), sep='\t')
-df = pd.merge(df, df2, how='inner')
-
-# df = df.drop('DRUG_ID', axis=1)
-df = df.drop('SMILES_expression', axis=1)
-# df = df.drop('LN_IC50', axis=1)
-df["CELL_LINE_NAME"] = df.apply(lambda row: row["CELL_LINE_NAME"].replace('-', ''),axis = 1)
-
-df2 = pd.read_table(open(path + 'LatentVec_CellLine_CSI.tsv'), sep='\t')
-df = pd.merge(df, df2, on="CELL_LINE_NAME", how='inner')
-
-# df = df.drop('CELL_LINE_NAME', axis=1)
-df.to_csv(path + 'LatentVec_Drug+GeneExp_CSI.txt', sep='\t', index=False)
-
-
-# Dispose of the column name
-'''
-path = "D:\Study\CIS\数据集\GDSC\\"
-df = pd.read_table(open(path + 'LatentVec_CellLine_CSI.tsv'), sep='\t')
-
-df.columns = df.columns.map(lambda x: x.replace('g', 'ge'))
-df.to_csv(path + 'LatentVec_CellLine_CSI.tsv', sep='\t', index=False)
-'''
-
+#-------------------------------------------EXPRESSION------------------------------------------------------------------
 # breast cancer cell lines
 '''
-df = pd.read_table(path + 'CCLE_RNAseq_rsem_genes_tpm_20180929.txt')
+df = pd.read_csv(path + 'CCLE_RNAseq_rsem_genes_tpm_20180929.txt', sep='\t')
 Cell_lines = list(df.columns.values)  # all cancer line information
 Breast_Cell_lines = ['gene_id', 'transcript_ids']
 
@@ -132,14 +27,48 @@ f = df[Breast_Cell_lines]
 f.to_csv(path + 'CCLE_gene_expression_train(breast).txt', sep='\t', index=False)
 '''
 
+
+
+
+# Find corresponding cancer cell lines in GDSC
+'''
+def CCLE2Standard(str):
+    index = str.find('_')
+    res = str[0: index]
+    return res
+
+
+path = "D:\Study\CIS\数据集\CCLE\\"
+df = pd.read_csv(open(path + 'CCLE_gene_expression_train(breast).txt'), sep='\t')
+df = df.drop('gene_id', axis=1)
+df = df.drop('transcript_ids', axis=1)
+CCLE_CellLines = list(df.columns.values)  # all cancer line information
+Standard_CellLines = CCLE_CellLines[:]
+iter = 0
+for iter in range(0, len(CCLE_CellLines)):
+    temp = CCLE_CellLines[iter]
+    Standard_CellLines[iter] = CCLE2Standard(temp)
+
+path = "D:\Study\CIS\数据集\GDSC\\"
+df = pd.read_csv(open(path + 'GDSC1_fitted_dose_response_25Feb20.txt'), sep='\t')
+df = df[['CELL_LINE_NAME', 'DRUG_ID', 'DRUG_NAME', 'LN_IC50']]
+
+Standard_CellLines = set(Standard_CellLines)
+
+
+df = df.loc[df['CELL_LINE_NAME'].replace('-', '').isin(Standard_CellLines)]
+
+df.to_csv(path + 'GDSC1_(breast).txt', sep='\t', index=False)
+'''
+
 # Hugo nomenclature
 '''
 Breast_Cell_lines = ['gene_id', 'transcript_ids']
-df = pd.read_table(path + 'CCLE_gene_expression_train(breast).txt', sep='\t')
+df = pd.read_csv(path + 'CCLE_gene_expression_train(breast).txt', sep='\t')
 gene_id_raw = df[Breast_Cell_lines]
 mat1 = np.array(gene_id_raw)
 
-df2 = pd.read_table(path + 'CCLE_RNAseq_genes_rpkm_20180929.txt')
+df2 = pd.read_csv(path + 'CCLE_RNAseq_genes_rpkm_20180929.txt')
 Breast_Cell_lines = ['Name', 'Description']
 gene_id_done = df2[Breast_Cell_lines]
 mat2 = np.array(gene_id_done)
@@ -163,9 +92,7 @@ df.to_csv(path + 'CCLE_gene_expression_train(hugo).txt', sep='\t', index=False)
 
 # Intersection with CGC
 '''
-df = pd.read_table(path + 'CCLE_gene_expression_train(hugo).txt', sep='\t')
-#k = df.drop('gene_id', axis=1)
-#k.to_csv(path + 'CCLE_gene_expression_train(v2).txt', sep='\t', index=False)
+df = pd.read_csv(path + 'CCLE_gene_expression_train(hugo).txt', sep='\t')
 
 path = "D:\Study\CIS\数据集\CGC\\"
 df2 = pd.read_csv(path + 'Census_allThu Jul 30 07_07_22 2020.csv')
@@ -174,7 +101,7 @@ kk = np.array(kk)
 kk = kk.tolist()
 kk = set(kk)
 
-#df = pd.read_table(path + 'CCLE_gene_expression_train(hugo).txt', sep='\t')
+#df = pd.read_csv(path + 'CCLE_gene_expression_train(hugo).txt', sep='\t')
 gene = df['Description']
 gene = np.array(gene)
 gene = gene.tolist()
@@ -182,22 +109,209 @@ gene = set(gene)
 
 combine = list(kk & gene)
 
-#df2 = pd.read_table(path + 'CCLE_gene_expression_train(hugo).txt', sep='\t', index_col=0)
+#df2 = pd.read_csv(path + 'CCLE_gene_expression_train(hugo).txt', sep='\t', index_col=0)
 # print(df2['Gene'][1])
 
 print(df.head())
 ff = df.loc[df['Description'].isin(combine)]
 print(ff.shape[0])
-ff.to_csv(path + 'CCLE_gene_expression_train(cgc).txt', sep='\t', index=True)
+ff.to_csv(path + 'CCLE_gene_expression_train(cgc).txt', sep='\t')
 '''
 
 
-"""
-for df in table:
-    #1.对每一个分块df处理
-    df_list.append(df)
-    print(type(df),df.shape)
-df = pd.concat(df_list, ignore_index=True)
-"""
+# eliminate useless genes
+'''
+from numpy import *
+path = "D:\Study\CIS\数据集\CCLE\\"
+df = pd.read_csv(path + 'CCLE_RNAseq_rsem_genes_tpm_20180929.txt', sep='\t')
+df.drop('transcript_ids', axis=1, inplace=True)
+print(df.shape)
+dfList = []
+
+for i in df.index:
+    rowData = df.loc[i].values[:]
+    rowData = rowData.tolist()
+    if std(rowData[1:])<0.5:
+        continue
+    dfList.append(rowData)
+
+df = pd.DataFrame({dfList[i][0]: dfList[i][1: ] for i in range(0, len(dfList))})
+df = df.T
+
+df2 = pd.read_csv(path + 'CCLE_RNAseq_rsem_genes_tpm_20180929.txt', sep='\t')
+df.columns = df2.columns.values[2: ]
+
+df.to_csv(path + 'CCLE_gene_expression_train(eliminated).txt', sep='\t', index=False)
+'''
 
 
+
+
+# Additional process
+'''
+path = "D:\Study\CIS\数据集\CCLE\\"
+df = pd.read_csv(path + 'CCLE_gene_expression_train(cgc).txt', sep='\t')
+df = df.drop('num', axis=1)
+# df = df.drop('gene_id', axis=1)
+df.to_csv(path + 'CCLE_gene_expression_train(cgc).txt', sep='\t', index=False)
+'''
+
+
+# steven eliminate v4
+'''
+path = "C:\\Users\dhy\Documents\WeChat Files\wxid_2isdora2arxe12\FileStorage\File\\2020-08\\"
+df = pd.read_csv(path + 'CCLE_gene_expression_train_pancancer(v4)(1).txt', sep='\t')
+df2 = pd.read_csv(path + 'Pancancer_Name(1).txt', sep=' ')
+
+cellLines = df.columns.values
+
+for i in range(1, df.shape[1]):
+    if df2.loc[df.loc[641, cellLines[i]], 'num'] < 30:
+        df.drop(cellLines[i], axis=1, inplace=True)
+
+
+df.to_csv(path + 'CCLE_gene_expression_train(v4+eliminated_for_tsne_30).txt', sep='\t', index=False)
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#-------------------------------------------DRUG_RESPONSE---------------------------------------------------------------
+#
+'''
+path = "D:\Study\CIS\数据集\GDSC\\"
+df = pd.read_csv(open(path + 'PUBCHEM_id_GDSC1.txt'), sep='\t')
+df2 = pd.read_csv(open(path + 'SMILES_GDSC1.txt'), sep='\t')
+
+df = pd.merge(df, df2)
+df.to_csv(path + 'GDSC1_DRUG_SMILES.txt', sep='\t', index=False)
+'''
+
+# breast data in GDSC incoporated with SMILES representation of drugs
+'''
+path = "D:\Study\CIS\数据集\GDSC\\"
+df = pd.read_csv(open(path + 'DRUG_SMILES.txt'), sep='\t')
+df2 = pd.read_csv(open(path + 'GDSC1_(pan).txt'), sep='\t')
+df = pd.merge(df, df2)
+
+df = df[['CELL_LINE_NAME', 'DRUG_ID', 'SMILES_expression', 'LN_IC50']]
+df.to_csv(path + 'CellLine_Smiles_IC50(pan).txt', sep='\t', index=False)
+'''
+
+
+# CSI --> latent vectors of drugs + gene expression
+'''
+path = "D:\Study\CIS\数据集\GDSC\\"
+df = pd.read_csv(open(path + 'CellLine_Smiles_IC50.txt'), sep='\t')
+df2 = pd.read_csv(open(path + 'LatentVec_Drug(unsampled).txt'), sep=' ')
+df = pd.merge(df, df2, how='inner')
+
+# df = df.drop('DRUG_ID', axis=1)
+df = df.drop('SMILES_expression', axis=1)
+# df = df.drop('LN_IC50', axis=1)
+df["CELL_LINE_NAME"] = df.apply(lambda row: row["CELL_LINE_NAME"].replace('-', ''),axis = 1)
+
+df2 = pd.read_csv(open(path + 'RawVec_GeneExp(cgc+eliminated).tsv'), sep='\t')
+df = pd.merge(df, df2, on="CELL_LINE_NAME", how='inner')
+
+
+# df = df.drop('CELL_LINE_NAME', axis=1)
+df.to_csv(path + 'LatentVec_Drug+RawVec_GeneExp(cgc+eliminated+unsampledDrug).txt', sep='\t', index=False)
+'''
+
+
+# CSI --> latent vectors of drugs + gene expression + gene mutation
+'''
+path = "D:\Study\CIS\数据集\GDSC\\"
+df = pd.read_csv(open(path + 'CellLine_Smiles_IC50.txt'), sep='\t')
+df2 = pd.read_csv(open(path + 'LatentVec_Drug.txt'), sep=' ')
+df = pd.merge(df, df2, how='inner')
+
+# df = df.drop('DRUG_ID', axis=1)
+df = df.drop('SMILES_expression', axis=1)
+# df = df.drop('LN_IC50', axis=1)
+df["CELL_LINE_NAME"] = df.apply(lambda row: row["CELL_LINE_NAME"].replace('-', ''),axis = 1)
+
+df2 = pd.read_csv(open(path + 'LatentVec_GeneExp.tsv'), sep='\t')
+df = pd.merge(df, df2, on="CELL_LINE_NAME", how='inner')
+df2 = pd.read_csv(open(path + 'LatentVec_GeneMut.tsv'), sep='\t')
+df = pd.merge(df, df2, on="CELL_LINE_NAME", how='inner')
+
+# df = df.drop('CELL_LINE_NAME', axis=1)
+df.to_csv(path + 'LatentVec_Drug+GeneExp+GeneMut.txt', sep='\t', index=False)
+'''
+
+
+# Dispose of the column name
+'''
+path = "D:\Study\CIS\数据集\CCLE\\"
+df = pd.read_csv(open(path + 'RawVec_GeneExp(cgc+eliminated).tsv'), sep='\t')
+
+df.columns = df.columns.map(lambda x: 'ge'+x)
+df.to_csv(path + 'RawVec_GeneExp(cgc+eliminated).tsv', sep='\t', index=False)
+'''
+
+
+# Dispose of the row name
+'''
+path = "D:\Study\CIS\数据集\CCLE\\"
+df2 = pd.read_csv(open(path + 'CCLE_gene_expression_train(cgc+eliminated).txt'), sep='\t')
+path = "C:\\Users\dhy\Desktop\新建文件夹\\"
+df = pd.read_csv(open(path + 'LatentVec_GeneExp_normbyfeature(cgc+eliminated+unsampled).tsv'), sep='\t')
+
+for i in range(0, df.shape[0]):
+    df.loc[i, 'CELL_LINE_NAME'] = df2.columns.values[i].split('_')[0]
+
+df.to_csv(path + 'LatentVec_GeneExp_normbyfeature(cgc+eliminated+unsampled).tsv', sep='\t', index=False)
+'''
+
+# Raw Vecs
+'''
+path = "D:\Study\CIS\数据集\CCLE\\"
+df = pd.read_csv(open(path + 'RawVec_GeneExp(cgc+eliminated).tsv'), sep='\t')
+df2 = pd.read_csv(open(path + 'CCLE_gene_expression_train(cgc+eliminated).txt'), sep='\t')
+cellLines = df2.columns.values
+cellLines = cellLines.tolist()
+
+# df.drop('CELL_LINE_NAME', axis=1, inplace=True)
+for i in range(len(cellLines)):
+    cellLines[i] = cellLines[i].split('_')[0]
+
+df.insert(0, "CELL_LINE_NAME", cellLines)
+
+df.to_csv(path + 'RawVec_GeneExp(cgc+eliminated).tsv', sep='\t', index=False)
+'''
+
+
+# Final Result
+'''
+from numpy import *
+df = pd.read_csv(open('D:\Study\CIS\CancerML\mlps_drug_exp\\R2_Score(cgc+eliminated+unsampledGene+unsampledDrug).txt'), sep='\t')
+result = mean(df.loc[16: , 'R2_test'])
+print(result)
+pass
+'''
+
+
+# Restore data file
+'''
+import os
+dataFile = os.path.join('D:\Study\CIS\CancerML\mlps_drug_exp\\data',
+                          'LatentVec_Drug+GeneExp(cgc+eliminated+unsampledGene+unsampledDrug).txt')
+df = pd.read_csv(open(dataFile), sep='\t')
+for i in range(57):
+    df.drop(str(i), axis=1,  inplace=True)
+
+df.drop('Unnamed: 0', axis=1,  inplace=True)
+df.to_csv(dataFile, sep='\t')
+'''
