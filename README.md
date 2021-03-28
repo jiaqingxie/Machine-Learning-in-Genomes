@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/github-v1.0.0-519dd9.svg)
 ![90%](https://progress-bar.dev/90)
 # Variational Autoencoders for Anti-cancer Drug Response Prediction
-Welcome to my first cancer machine learning project. It's my second years' undergraduate research. Here's my teammates: Yuan and Varus and Dexion. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB. Our paper link:(https://arxiv.org/abs/2008.09763)
+Welcome to my first cancer machine learning project. It's my second years' undergraduate research. Here's my teammates: Yuan and Varus and Dexion. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB. Our paper link:(https://arxiv.org/abs/2008.09763), accepted by 2021 ICLR AI4PH workshop.
 
 ## Check your environment
 You should have a pytorch version of 1.5.0 or above. Also you should have a cuda version of 9 or above.
