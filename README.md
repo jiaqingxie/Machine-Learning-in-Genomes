@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/github-v1.0.0-519dd9.svg)
 ![99%](https://progress-bar.dev/99)
 # Variational Autoencoders for Anti-cancer Drug Response Prediction
-Welcome to my first cancer machine learning project. It's my second years' undergraduate research. Here's my teammates: Yuan and Varus and Dexin, who are all undergradaute at their third, second and first year. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB. Our paper link:(https://arxiv.org/abs/2008.09763), accepted by 2021 ICLR AI4PH workshop (paper 33)
+Welcome to my first cancer machine learning project. It's my second years' undergraduate research. Here's my teammates: Yuan and Varus and Dexin, who are all undergradaute at their third, second and first year. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB. Our paper link:(https://arxiv.org/pdf/2008.09763.pdf), accepted by 2021 ICLR AI4PH workshop (paper 33)
 
 
 
