@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/github-v1.0.0-519dd9.svg)
 ![95%](https://progress-bar.dev/95)
 # Variational Autoencoders for Anti-cancer Drug Response Prediction
-Welcome to my first cancer machine learning project. It's my second years' undergraduate research. Here's my teammates: Yuan and Varus and Dexion. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB. Our paper link:(https://arxiv.org/abs/2008.09763), accepted by 2021 ICLR AI4PH workshop.
+Welcome to my first cancer machine learning project. It's my second years' undergraduate research. Here's my teammates: Yuan and Varus and Dexion. We are supervised by Prof. Manolis Kellis from MIT CSAIL LAB. Our paper link:(https://arxiv.org/abs/2008.09763), accepted by 2021 ICLR AI4PH workshop (paper 33)
 
 
 
@@ -15,12 +15,14 @@ The following order in the command line can download the newest version of pytor
 ```Bash
 conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 ```
-In /Code/CancerML/mlps_drug_exp env, run train.py to test our model on breast cancer (dont need to change anything)
+In /Code/CancerML/mlps_drug_exp env, run train.py to test our model on breast cancer dataset(dont need to change anything)
 ```python
 python train.py
 ```
-
-
+run train_pan.py to test our model on pancancer datasets
+```python
+python train_pan.py
+```
 
 ## Introductions
 With the development of molecular biology, the study of cancer genomics has enabled scientists to develop anti-cancer drugs according to cancers’ genomics features. These drugs are used widely and have great significance in the therapy of cancer treatment nowadays. However,the efficacy of anti-cancer drugs vary greatly from one kind of tumor to another,making it considerably difficult to customize therapy strategy for patients. Moreover, the efficacy of anti-cancer drugs is closely related with their molecular structure, which is also hard to predict even for sophisticated pharmacists. To provide more precise treatment strategy, a sufficient analysis and understanding of cancers’ genomic data and drugs molecular structure is essential.
@@ -29,8 +31,6 @@ Specifically, in this research, we select breast cancer, which is the main cance
 
 ## Related works
 * [Cancer Drug Response Profile scan (CDRscan): A Deep Learning Model That Predicts Drug Effectiveness from Cancer Genomic Signature](https://www.researchgate.net/publication/325696059_Cancer_Drug_Response_Profile_scan_CDRscan_A_Deep_Learning_Model_That_Predicts_Drug_Effectiveness_from_Cancer_Genomic_Signature)
-* [Auto-Encoding Variational Bayes](https://arxiv.org/pdf/1312.6114.pdf)
-
 
 
 ### Gene Variational Autoencoder (GeneVAE)
