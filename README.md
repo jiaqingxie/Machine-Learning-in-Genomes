@@ -23,4 +23,15 @@ run train_pan.py to test our model on pancancer datasets
 ```python
 python train_pan.py
 ```
-
+## Citation
+If you use to cite our results in your research paper, please consider citing:
+```
+@misc{dong2021variational,
+      title={Variational Autoencoder for Anti-Cancer Drug Response Prediction}, 
+      author={Hongyuan Dong and Jiaqing Xie and Zhi Jing and Dexin Ren},
+      year={2021},
+      eprint={2008.09763},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
