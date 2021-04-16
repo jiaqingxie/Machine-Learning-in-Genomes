@@ -15,6 +15,10 @@ The following order in the command line can download the newest version of pytor
 ```Bash
 conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 ```
+In /Code/CancerML/mlps_drug_exp env, run train.py to test our model on breast cancer (dont need to change anything)
+```python
+python train.py
+```
 
 
 
@@ -28,7 +32,6 @@ Specifically, in this research, we select breast cancer, which is the main cance
 * [Auto-Encoding Variational Bayes](https://arxiv.org/pdf/1312.6114.pdf)
 
 
-## Pipeline 
 
 ### Gene Variational Autoencoder (GeneVAE)
  ![GeneVAE](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/GeneVAE.png)
@@ -51,12 +54,3 @@ Specifically, in this research, we select breast cancer, which is the main cance
 ### Models
 1. Variational Autoencoder(VAE)
 2. Multilayer Perceptron(MLP)
-### Papers
-### Simulations
-### Results
-  ![t-SNE](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/results/figures/TSNE_before_vae(cgc_genes).png)
-  
-  
-  after vae
-  ![t-SNE](https://github.com/JIAQING-XIE/Machine-Learning-in-Genomes-Summer-Research-/blob/master/results/figures/TSNE_Pancancer_after_vae.png)
-# ICLR2021_workshop
