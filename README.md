@@ -30,6 +30,6 @@ If you use to cite our results in your research paper, please consider citing:
       title={Variational Autoencoder for Anti-Cancer Drug Response Prediction}, 
       author={Hongyuan Dong and Jiaqing Xie and Zhi Jing and Dexin Ren},
       year={2021},
-      journals={AI4PH workshop, ICLR 2021}
+      journals={AI4PH workshop, ICLR 2021},
 }
 ```
